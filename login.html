@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+    background-attachment: fixed;
+    background: linear-gradient(0deg, rgb(194, 13, 13) 0%, rgb(0, 0, 0) 86%);
+}
+
+.login-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  color: #a60505;
+}
+
+.login-input {
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+}
+
+.login-button {
+  background-color: #7b0505;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #870c0c;
+}
+
+p{
+    color: #000000;
+}
+a{
+  text-decoration: none;
+  color: #be0000;
+}
+    </style>
+</head>
+<body>
+    <a href="home.html" style="position: absolute; top: 10px; left: 10px; color: #ffffff;">&lt;- Back</a>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="post" action="login.php">
+          <input type="text" class="login-input" placeholder="Username" name="uname1"><br>
+          <input type="password" class="login-input" placeholder="Password" name="upswd1">
+          <button type="submit" class="login-button">Login</button>
+          <hr>
+          <p>New to account? <a href="signUp.html"><B >signup</B></a></p>
+        </form>
+
+
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <script src="https://kit.fontawesome.com/92d70a2fd8.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    font-size: 18px;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: black;
+}
+.header{
+    height: 80px;
+    width: 70%;
+    background-color:#791111;
+    border-radius: 3px;
+    margin: 30px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+}
+.header .logo{
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+.cart{
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 10px;
+    border-radius: 3px;
+    width: 80px;
+}
+.fa-solid{
+    color:#791111;
+}
+.cart p{
+    height: 22px;
+    width: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    background-color:#791111;
+    color: white;
+}
+.container{
+    display: flex;
+    width: 100%;
+    margin-bottom: 30px;
+}
+#root{
+    width: 60%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+.sidebar{
+    width: 40%;
+    border-radius: 5px;
+    background-color: #eee;
+    margin-left: 20px;
+    padding: 15px;
+    text-align: center;
+}
+.head{
+    background-color: #791111;
+    border-radius: 3px;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.foot{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0px;
+    padding: 10px 0px;
+    border-top: 1px solid #333;
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #791111;
+    border-radius: 5px;
+    padding: 15px;
+}
+.img-box{
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.images{
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: cover;
+    object-position: center;
+}
+.bottom{
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 110px;
+}
+h2{
+    font-size: 20px;
+    color: rgb(39, 139, 0);
+}
+button{
+    width: 100%;
+    position: relative;
+    border: none;
+    border-radius: 5px;
+    background-color: #791111;
+    padding: 7px 25px;
+    cursor: pointer;
+    color: white;
+}
+button:hover{
+    background-color: #333;
+}
+.cart-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: white;
+    border-bottom: 1px solid #aaa;
+    border-radius: 3px;
+    margin: 10px 10px;
+}
+.row-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid #791111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rowimg{
+    max-width: 43px;
+    max-height: 43px;
+    border-radius: 50%;
+}
+.fa-trash:hover{
+    cursor: pointer;
+    color: #333;
+}
+    </style>
+</head>
+<body>
+
+<a href="home.html" style="position: absolute; top: 10px; left: 10px;color: azure;">&lt;- Back</a>
+
+
+
+    <div class="header">
+        <p class="logo">SPARTENS</p>
+        <div class="cart"><i class="fa-solid fa-cart-shopping"></i><p id="count"></p></div>
+    </div>
+
+    <div class="container">
+    
+
+        <!-- <div class="col-sm-6"> -->
+            <div class="card right-card">
+                <div class="head">
+                    <p>My Cart</p>
+                </div>
+                <div class="row" id="productContainer">
+                </div>
+                <div class="foot">
+                    <h3>Total</h3>
+                    <h2 id="total"></h2>
+                </div>
+            </div>
+        </div>
+        
+
+    <script>
+        let total = 0;
+        let products = JSON.parse(localStorage.getItem("cart")) || [];
+            if(products){
+                products.forEach((product)=>{
+                    let number = parseInt(product.price)
+                    total+=number
+                })
+            }
+        const countdisplay = document.getElementById("count")
+        countdisplay.innerHTML = products.length
+        document.addEventListener("DOMContentLoaded", function () {
+
+
+            const totalDisplay = document.getElementById("total")
+            totalDisplay.innerHTML = `Rs : ${total}`
+
+            const productContainer = document.getElementById("productContainer");
+
+            products.forEach((product) => {
+                const productCard = `
+ <div class="col-md-3 col-sm-6 mt-3 mb-3">
+    <div class="card h-100" style="min-width: 200px;">
+               <img src="${product.image}" class="card-img-top" alt="${product.name} Image">
+        <div class="card-body p-1" style="max-width: 150px;">
+            <p class="card-text mb-0">${product.name}</p>
+            <p class="card-text mb-0">${product.price}</p>
+            <button onclick="getproducttoDelete('${product.name}')" class="btn btn-danger mt-2">Delete</button>
+        </div>
+    </div>
+</div>
+
+
+                `;
+
+                productContainer.innerHTML += productCard;
+            });
+        });
+
+        function getproducttoDelete(name){
+            
+            products = products.filter(product => product.name != name)
+            console.log(products)
+            localStorage.setItem("cart",JSON.stringify(products));
+            location.reload()
+}
+
+        
+    </script>
+</body>
+</html>

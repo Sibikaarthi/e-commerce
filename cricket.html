@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cricket products</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="boot.css">
+  <style>
+    
+  
+  #cartIcon {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+#cartCount {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 5px;
+  font-size: 10px;
+}
+  </style>
+</head>
+<body>
+
+
+
+  <div class="wrapper">
+    <nav id="sidebar">
+      <ul class="list-unstyled ">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="cricket.html">Cricket</a></li>
+        <li><a href="shoes.html">Shoes</a></li>
+        <li><a href="shirts.html">Shirts</a></li>
+        <li><a href="delivery.html">Delivery</a></li>
+        <li><a href="review.html">Review</a></li>
+        <li><a href="contactus.html">ContactUs</a></li>
+      </ul>
+    </nav>
+
+    <div id="content">
+      <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+          <button type="button" id="sidebarCollapse">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+          </button>
+                 <img src="/imges/logo.png" alt="" height="70px" width="70px">
+                <a class="navbar-brand" href="#">V11 SPARTANS</a>
+                <input class="form-control search-input" type="text" placeholder="Search...">
+                <div class="icon" id="cartIcon">
+                  <a href="add to cart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>Cart</p>
+                    <span id="cartCount">0</span>
+                  </a>
+                </div>
+             
+                <div class="icon">
+                    <a href="signin.html"><i class="fas fa-sign-in-alt"></i><p>Sign Up</p></a>
+                </div>
+           </div>
+      </nav>
+      
+<!-- content -->
+
+<div class="container mt-5">
+  <div class="row">
+  </div>
+</div>
+
+
+
+
+
+<footer style="background-color: #000000; color: #fff; padding: 20px; text-align: center;">
+      <div class="copyright">
+        <p>&copy; 2023 Spartans. All Rights Reserved.</p>
+      </div>
+      <div class="social-icons" style="margin-top: 10px;">
+        <a href="#" target="_blank"><img src="/imges/—Pngtree—facebook logo facebook icon_3566127.png" alt="Facebook" style="width: 30px; height: 30px; margin-right: 10px;"></a>
+        <a href="#" target="_blank"><img src="/imges/icons8-instagram-240.png" alt="Twitter" style="width: 30px; height: 30px; margin-right: 10px;"></a>
+        <a href="#" target="_blank"><img src="/imges/icons8-twitter-64.png" alt="Instagram" style="width: 30px; height: 30px;"></a>
+      </div>
+    </footer>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="SCRIPT.JS">
+   
+  </script>
+
+
+
+<script>
+  const  localStorageProduct = JSON.parse(localStorage.getItem("cart"))
+  const countdisplay = document.getElementById("cartCount")
+  countdisplay.innerHTML = localStorageProduct.length
+  document.addEventListener("DOMContentLoaded", function () {
+    const products=[
+  { image: "bats/bat1.avif", price: 3400, name: "Cricket Bat 1" },
+  { image: "bats/arm guard.avif", price: 4700, name: "Arm Guard" },
+  { image: "bats/bag 2.avif", price: 5800, name: "Cricket Bag 2" },
+  { image: "bats/bag.avif", price: 2800, name: "Cricket Bag" },
+  { image: "bats/bat2.avif", price: 3400, name: "Cricket Bat 2" },
+  { image: "bats/bat3.avif", price: 5640, name: "Cricket Bat 3" },
+  { image: "bats/bat4.avif", price: 3460, name: "Cricket Bat 4" },
+  { image: "bats/bat5.avif", price: 8730, name: "Cricket Bat 5" },
+  { image: "bats/bat6.avif", price: 5400, name: "Cricket Bat 6" },
+  { image: "bats/bat7.avif", price: 8650, name: "Cricket Bat 7" },
+  { image: "bats/bat8.avif", price: 4300, name: "Cricket Bat 8" },
+  { image: "bats/bat9.avif", price: 4120, name: "Cricket Bat 9" },
+  { image: "bats/bat10.avif", price: 4670, name: "Cricket Bat 10" },
+  { image: "bats/gloves.avif", price: 6540, name: "Cricket Gloves" },
+  { image: "bats/gloves2.avif", price: 7540, name: "Cricket Gloves 2" },
+  { image: "bats/guard.avif", price: 8570, name: "Cricket Guard" },
+  { image: "bats/helmet 2.avif", price: 4800, name: "Cricket Helmet 2" },
+  { image: "bats/helmet.avif", price: 5800, name: "Cricket Helmet" },
+  { image: "bats/kid gloves.avif", price: 6800, name: "Kid's Cricket Gloves" },
+  { image: "bats/pad.avif", price: 3400, name: "Cricket Pad" },
+  { image: "bats/thi guard.avif", price: 5800, name: "Thigh Guard" },
+  { image: "bats/bat1.avif", price: 5600, name: "Cricket Bat 11" },
+];
+
+    const productContainer = document.querySelector(".row");
+
+    products.forEach((product) => {
+      
+      const productCard = `
+      <div class="col-md-3 mt-3 mb-3">
+          <div class="card" style="width: 50% ;">
+            <img src="${product.image}" class="card-img-top" alt="Product Image">
+            <div class="card-body p-2">
+              <p class="card-text mb-0">${product.price}</p>
+            
+                <button class="btn btn-sm btn-primary" id="addToCartBtn" onclick="addToCartJson('${product.image}', '${product.price}', '${product.name}')">Cart</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+
+
+      productContainer.innerHTML += productCard;
+    });
+  });
+  let cartProduct = localStorageProduct;
+
+  function addToCartJson(image, price, name) {
+  const existingProduct = cartProduct.find(
+    (product) => product.name === name
+  );
+
+  console.log(existingProduct)
+
+  if (existingProduct) {
+    alert("This product is already in your cart!");
+  } else {
+    const product = { image, price, name };
+    cartProduct.push(product);
+    localStorage.setItem("cart", JSON.stringify(cartProduct));
+    alert("Added successfully!");
+    location.reload();
+  }
+  
+  const countDisplay = document.getElementById("cartCount");
+  countDisplay.innerHTML = cartProduct.length;
+}
+
+  
+</script>
+
+
+
+    
+
+</body>
+</html>
